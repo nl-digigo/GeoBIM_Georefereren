@@ -4,7 +4,7 @@ Deze praktijkrichtlijn kan men gebruiken in het B&U- en Infra-domein. Georeferen
 
 De beschreven methoden en technieken in deze praktijkrichtlijn kan men gebruiken wanneer men informatie wil uitwisselen tussen verschillende softwarepakketten of applicaties, of wanneer men verschillende databronnen wil combineren en bevragen.
 
-De praktijkrichtlijn kan men gebruiken wanneer men een geschikte methodiek voor georeferentie af wil spreken in een specifieke use-case die past bij de benodigde nauwkeurigheid en beoogde datasets.
+De praktijkrichtlijn kan men gebruiken wanneer men een geschikte methodiek voor georeferentie af wil spreken in een specifieke use-case die past bij de benodigde nauwkeurigheid en beoogde datasets van de use case.
 
 Tenslotte kan men de richtlijn gebruiken als handleiding om georeferentie in veelgebruikte softwarepakketten op een standaardwijze toe te passen.
 
