@@ -28,7 +28,7 @@ Optie 2: 3D
 </figure>
 
 ### Controleren van de onderlegger
-Een DWG of DXF kan getekend zijn op RD-coördinaten en toch geen coördinatenstelsel bevatten. De getallen kloppen in dat geval wel, maar Revit weet niet wat ze betekenen.
+Een DWG of DXF kan getekend zijn op RD-coördinaten en toch geen coördinatenstelsel bevatten. De getallen kloppen in dat geval wel, maar software als Revit weet niet wat ze betekenen.
 
 **Controle in Civil3D**
 1.	Open het DWG- of DXF-bestand in Civil 3D.
@@ -80,15 +80,15 @@ In AutoCAD kan men een coördinatenstelsel wel zien, maar niet toekennen. Daarvo
 </figure>
 
 ## Revit
-Revit kent het begrip <a>Internal Origin</a>. Dit is de oorsprong in Revit die niet verplaatsbaar is. Daarnaast bestaat er een *<a>Project Basepoint</a>:*, ook wel Lokaal Coördinatiepunt. Dit punt wordt gebruikt om gemodelleerde elementen te positioneren en uitwisseling met andere modellen mogelijk te maken. tijdens engineering en/of wanneer Georeferentie niet relevant is. Ook kent Revit een <a>Survey Point</a>. Dit punt, een soort CRS-coordinatiepunt, wordt gebruikt om de relatie te leggen met een coördinatenstelsel (CRS) en zo de positie van het model op de aardbol vast te leggen.
-Revit kent <a>Project Units</a>. De project units bevat de instelling van de standaard eenheden die men binnen het project gebruikt. Hier kan men bijvoorbeeld opgegeven of er met meters of met millimeters wordt gewerkt of volume in liters of m<sup>3</sup>.<br>
+Revit kent het begrip <a>Internal Origin</a>. Dit is de oorsprong in Revit die niet verplaatsbaar is. Daarnaast bestaat er een *<a>Project Basepoint</a>:*, ook wel Lokaal Coördinatiepunt. Dit punt wordt gebruikt om gemodelleerde elementen te positioneren en uitwisseling met andere modellen mogelijk te maken tijdens engineering en/of wanneer Georeferentie niet relevant is. Ook kent Revit een <a>Survey Point</a>. Dit punt, een soort CRS-coordinatiepunt, wordt gebruikt om de relatie te leggen met een coördinatenstelsel (CRS) en zo de positie van het model op de aardbol vast te leggen.
+Revit kent <a>Project Units</a>. De project units bevat de instelling van de standaard eenheden die men binnen het project gebruikt. Hier kan men bijvoorbeeld opgeven of er met meters of met millimeters wordt gewerkt of volume in liters of m<sup>3</sup>.<br>
 <figure id="Scherm-in-Revit-dat-Lokaal-Coordinatiepunt-en-CRS-Coordinatiepunt-laat-zien" style="display: block; text-align: center; margin: 0 auto;">
       <img src="./media/Handleiding/Revit/Revit_1.png" alt="Scherm in Revit dat Lokaal Coordinatiepunt en CRS-Coordinatiepunt laat zien" style="width: 100%; max-width: 500px; height: auto; display: block; margin: 0 auto;"/>
     <figcaption><a class="self-link" href="#fig-Scherm-in-Revit-dat-Lokaal-Coordinatiepunt-en-CRS-Coordinatiepunt-laat-zien"></bdi></a><span class="fig-title">Scherm in Revit dat Lokaal Coordinatiepunt en CRS-Coordinatiepunt laat zien</span></figcaption>
 </figure>
 
 <aside class="note" title="Modelleer dichtbij het Internal Origin">
-  <p><strong>AANBEVELING:</strong> Modelleer een bouwwerk dicht bij het Internal Origin. Het Survey Point voorziet in de RD-offset, niet de fysieke positie van het model. Zet men een bouwwerk daadwerkelijk op RD-coördinaten neer, dan kan het honderden kilometers van het Internal Origin staan. Dan loopt men tegen de 20-mijlsgrens van Revit aan. Dat levert onnauwkeurigheden en weergavefouten op. De hier beschreven werkwijze levert coordinaten en IFC-export op de juiste RD-waarden, terwijl geometrie op zijn plek blijft.
+  <p><strong>AANBEVELING:</strong> Modelleer een bouwwerk dicht bij het Internal Origin. Het Survey Point voorziet in de RD-offset, niet de fysieke positie van het model. Zet men een bouwwerk daadwerkelijk op RD-coördinaten neer, dan kan het honderden kilometers van het Internal Origin staan. Dan loopt men tegen de 20-mijlsgrens van Revit aan. Dat levert onnauwkeurigheden en weergavefouten op. De hier beschreven werkwijze levert coördinaten en IFC-export op de juiste RD-waarden, terwijl geometrie op zijn plek blijft.
 </p>
 </aside>
 
@@ -109,7 +109,7 @@ Revit kent <a>Project Units</a>. De project units bevat de instelling van de sta
     <figcaption><a class="self-link" href="#fig-Onderligger-linken-in-Revit"></bdi></a><span class="fig-title">Instellingen bij Link CAD: importeenheid meter, positionering Auto - Center to Center, en Correct lines that are slightly off axis en Orient to View beide uit.</span></figcaption>
 </figure>
 
-De onderlegger kan getekend zijn op RD-coördinaten. Dat betekent vaak dat de geometrie honderden kilometers van het nulpunt van het bestand liggen. Wanneer men kiest voor Auto - Origin to Origin, dan komt de onderlegger op diezelfde afstand van het model terecht. Men loopt dan direct tegen de 20-mijlsgrens van Revit aan. Center to Center plaatst de inhoud van de onderlegger bij je model, waarna deze handmatig op de juiste plek te leggen is.
+De onderlegger kan getekend zijn op RD-coördinaten. Dat betekent vaak dat de geometrie honderden kilometers van het nulpunt van het bestand ligt. Wanneer men kiest voor Auto - Origin to Origin, dan komt de onderlegger op diezelfde afstand van het model terecht. Men loopt dan direct tegen de 20-mijlsgrens van Revit aan. Center to Center plaatst de inhoud van de onderlegger bij je model, waarna deze handmatig op de juiste plek kan worden gelegd.
 
 #### Uitlijnen en coördinaten overnemen
 1.	Verplaats en roteer de onderlegger naar een referentie-punt waarvan je de positie zeker weet of naar het model, zodat de onderlegger op de juiste positie staat. Verplaats daarbij niet het getekend model naar de juiste locatie op de onderlegger, maar verplaats de onderlegger naar het model.
@@ -118,7 +118,7 @@ De onderlegger kan getekend zijn op RD-coördinaten. Dat betekent vaak dat de ge
 4.  Na "Acquire Coordinates kan Revit bij het opslaan of synchroniseren vragen of de gewijzigde positie van de gelinkte onderlegger moet worden opgeslagen. Of die vraag komt verschilt per bronbestand.  De optie "Disable Shared Positioning" dient te worden gekozen, anders schrijven de nieuwe coordinaten terug naar de onderleger.
 5.	Selecteer de gelinkte onderlegger.
 6.	Lees de melding die Revit daarna toont. 
-7. Selecteer het Survey Point, unclip het en verplaatst het naar de gekozen X- en Y-waarden van het CRS-Coördinatiepunt (hele X- en Y-waarden in het RD-stelsel) en geef als Z-waarde de hoogte ten opzichte van NAP op. Clip vervolgens het Survey Point en verplaats het Survey Point in de Z-richting terug naar 0.
+7. Selecteer het Survey Point, unclip het en verplaats het naar de gekozen X- en Y-waarden van het CRS-Coördinatiepunt (hele X- en Y-waarden in het RD-stelsel) en geef als Z-waarde de hoogte ten opzichte van NAP op. Clip vervolgens het Survey Point en verplaats het Survey Point in de Z-richting terug naar 0.
 8. Plaats een coördinatie-object op het Survey Point.
 9. Plaats een coördinatie-object op het <a>Project Basepoint</a>.
 10. Als het ontwerp zover is dat de stramienen vaststaan dan kan het Project Basepoint verplaatst worden zodat die op 5 of 10m van de eerste stramienen staat zoals gebruikelijk. Vóór het verplaatsten moet het Project Basepoint ge-unclipt worden (vanaf Revit 2020.2 is de clip van Project Basepoint verwijderd). Verplaats vervolgens ook een coördinatie-object naar de nieuwe positie van het Project Basepoint.
@@ -130,7 +130,7 @@ Staat er achter GIS Coordinate System een omschrijving van het stelsel, dan is h
     <figcaption><a class="self-link" href="#fig-Melding-coordinaten-overgenomen-in-revit"></bdi></a><span class="fig-title">Coördinaten overgenomen inclusief stelsel: Netherlands, Amersfoort datum, New System.</span></figcaption>
 </figure>
 
-Staat er Unknown, dan bevatte het bronbestand geen coördinatenstelsel. Revit neemt dan alleen de getallen over, niet het stelsel.
+Staat er Unknown, dan bevat het bronbestand geen coördinatenstelsel. Revit neemt dan alleen de getallen over, niet het stelsel.
 
 <figure id="Melding-coordinaten-zonder-stelsel-in-revit" style="display: block; text-align: center; margin: 0 auto;">
       <img src="media/Handleiding/Revit/NLRS/coördinaten overgenomen zonder stelsel.png" alt="Coördinaten overgenomen zonder stelsel: GIS Coordinate System is Unknown." style="width: 100%; max-width: 500px; height: auto; display: block; margin: 0 auto;"/>
@@ -165,14 +165,14 @@ Door een omissie in de IFC-exporter van Revit moet voorafgaand aan het exportere
 
 Wanneer men later wil controleren of er een coördinatenstelsel gebruikt wordt in het model, ga dan naar Manage > Project Location > Location, tabblad Location.
 
-Wanneer er geen coördinatenstelsel gedefinieerd is dan staat *Define Location by* op Internet Mapping Service en de kaart toont de standaardlocatie uit de Revit-template. Het model staat dan feitelijk in de Verenigde Staten, in de omgeving van Boston, zoals op de kaart te zien is.
+Wanneer er geen coördinatenstelsel gedefinieerd is, dan staat *Define Location by* op Internet Mapping Service en de kaart toont de standaardlocatie uit de Revit-template. Het model staat dan feitelijk in de Verenigde Staten, in de omgeving van Boston, zoals op de kaart te zien is.
 
 <figure id="Revit-zonder-coordinatenstelsel" style="display: block; text-align: center; margin: 0 auto;">
       <img src="./media/Handleiding/Revit/NLRS/Revit_zonder_coordinatenstelsel.png" alt=Setup-in-Revit style="width: 100%; max-width: 500px; height: auto; display: block; margin: 0 auto;"/>
     <figcaption><a class="self-link" href="#fig-Revit-zonder-coordinatenstelsel"></bdi></a><span class="fig-title">Zonder coördinatenstelsel blijft de projectlocatie op de standaardlocatie uit de template staan, in de omgeving van Boston.</span></figcaption>
 </figure>
 
-Wanneer er wel een coördinatenstelsel gedefinieerd is dan staat *Define Location by* op Get Location From Survey Point. Onder GIS Coordinate System Code staat Amersfoort-RDNew, met de bijbehorende breedte- en lengtegraad.
+Wanneer er wel een coördinatenstelsel gedefinieerd is, staat *Define Location by* op Get Location From Survey Point. Onder GIS Coordinate System Code staat Amersfoort-RDNew, met de bijbehorende breedte- en lengtegraad.
 
 
 <figure id="Revit_met_coordinatenstelsel" style="display: block; text-align: center; margin: 0 auto;">
@@ -191,7 +191,7 @@ De IFC is niet ge-georefereerd (alleen de coordinaten van Project Basepoint zijn
 </figure>
 
 2.	CRS-Coördinatiepunt: exporteer een IFC (4 of hoger) met Survey Point als Coordinate Base.<br>
-Vul bij EPSG Code in: 28992. Dit zorgt ervoor dat de referentie wordt herkend in de software of tooling. De IFC is ge-Georefereerd en is Grid-noord gericht (True North in Revit)<br> Officieel is de EPSG Code 7415 vanwege de 3 dimensies van coordinaten. Dit wordt (nog) niet ondersteund in Revit. 
+Vul bij EPSG Code in: 28992. Dit zorgt ervoor dat de referentie wordt herkend in de software of tooling. De IFC is ge-Georefereerd en is Grid-noord gericht (True North in Revit)<br> Officieel is de EPSG Code 7415 vanwege de 3 dimensies van coördinaten. Dit wordt (nog) niet ondersteund in Revit. 
 
 <figure id="Setup-in-Revit-Survey-Point" style="display: block; text-align: center; margin: 0 auto;">
       <img src="./media/Handleiding/Revit/Revit_4.png" alt=Setup-in-Revit-Survey-Point style="width: 100%; max-width: 500px; height: auto; display: block; margin: 0 auto;"/>
@@ -201,16 +201,10 @@ Vul bij EPSG Code in: 28992. Dit zorgt ervoor dat de referentie wordt herkend in
 Zie ook [Hans Hendriks (2022)](https://github.com/Hans-Lammerts/Sample-Test-Files/blob/master/Geolocation%20information%20from%20Revit%20to%20IFC_v1.0.pdf) voor aanvullende toelichting.
 
 
-
-
-
-
-
-
 ## Autocad Civil 3D
 
-Er zijn momenteel 2 manieren om een Export te maken in Civil3D. De oude manier middels het commando “IFCEXPORT”. Hiermee worden alle Solids in het huidige model geëxporteerd. Dit maakt echter geen gebruikt van de nieuwe functionaliteiten van IFC4x3. Met de oude manier is het ook nodig om een Corridor eerst als solids te exporteren voordat je deze naar IFC exporteert. 
-Sinds enige tijd heeft Autodesk een plugin gemaakt welke het commando “IFCINFRAEXPORT” toevoegen aan Civil3D. Hiermee kan een IFC gemaakt worden welke de nieuwe functionaliteiten van IFC4x3 gebruikt. 
+Er zijn momenteel 2 manieren om een Export te maken in Civil3D. De oude manier werkt middels het commando “IFCEXPORT”. Hiermee worden alle Solids in het huidige model geëxporteerd. Dit maakt echter geen gebruik van de nieuwe functionaliteiten van IFC4x3. Met de oude manier is het ook nodig om een Corridor eerst als solids te exporteren voordat je deze naar IFC exporteert. 
+Sinds enige tijd heeft Autodesk een plugin gemaakt die het commando “IFCINFRAEXPORT” toevoegt aan Civil 3D. Hiermee kan een IFC gemaakt worden welke de nieuwe functionaliteiten van IFC4x3 gebruikt. 
 Deze [link](https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/Where-to-download-Civil-3D-IFC-4-3-Import-Export-Extension.html) beschrijft hoe je deze plugin kan downloaden van Autodesk. Voor de rest van deze handleiding wordt er vanuit gegaan dat deze plugin geïnstalleerd is.
  
 Stappenplan IFC Export Civil3D “IFCINFRAEXPORT”
