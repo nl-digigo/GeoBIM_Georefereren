@@ -4,8 +4,8 @@ let respecConfig = {
   // title is verplicht! Neem hier de titel van het document op ----------------------
   title: "Georefereren GeoBIM",
   //-- specStatus is verplicht! (activeer 1 van de volgende) --------------------------
-  specStatus: "wv",                   // Werkversie
-  //specStatus: "cv",               // Consultatieversie
+  //specStatus: "wv",                   // Werkversie
+  specStatus: "cv",               // Consultatieversie
   //specStatus: "vv",               // Versie ter vaststelling
   //specStatus: "def",              // Vastgestelde versie
   //specStatus: "basis",            // Basis Document
@@ -127,7 +127,7 @@ let respecConfig = {
     ],
   // TODO: Vul de github URL in.
   //neem hier de URL van de github repository op waar het respec document in staat
-  github: "https://github.com/Geonovum/GeoBIM_Georefereren",
+  github: "https://github.com/nl-digigo/GeoBIM_Georefereren",
   // Create PDF and link to file in header (optional):
   // TODO: Change the filename as preferred.
   alternateFormats: [
