@@ -1,6 +1,21 @@
 let respecConfig = {
   useLogo: true,
   useLabel: true,
+
+  logos: [
+    {
+      src: "https://docs.geostandaarden.nl/media/Geonovum.svg",
+      url: "https://www.geonovum.nl",
+      alt: "Geonovum",
+      id: "geonovum-logo",
+    },
+    {
+      src: "https://www.digigo.nu/wp-content/themes/sage/public/images/logo.56e780.png",
+      url: "https://www.digigo.nu",
+      alt: "digiGO",
+      id: "digigo-logo",
+    },
+  ],
   // title is verplicht! Neem hier de titel van het document op ----------------------
   title: "Georefereren GeoBIM",
   //-- specStatus is verplicht! (activeer 1 van de volgende) --------------------------
