@@ -1,4 +1,4 @@
-## CityJSON
+## Voorbeeld van georeferentie in CityJSON
 <aside class="example" title="Voorbeeld van een CityJSON CRS en verplaatsing">
 CRS duiding: 
 
