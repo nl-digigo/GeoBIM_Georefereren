@@ -16,11 +16,11 @@ Een Geodetische CRS (Coordinate Reference System) is een coördinaatreferentiesy
 **<dfn>Geprojecteerd CRS</dfn>** <br>
 Een Geprojecteerd CRS (Coordinate Reference System) is een coördinaatreferentiesysteem waarin de kromme, driedimensionale vorm van de aarde (zoals beschreven door een geodetische CRS) wordt afgebeeld op een plat vlak met behulp van een kaartprojectie.Het RD (Rijksdriehoeksstelsel) is een voorbeeld van een geprojecteerd CRS<br>
 <br>
-**<dfn>Vertikaal CRS</dfn>** <br>
-Een coördinaatreferentiesysteem dat gebruikt wordt om hoogtes of dieptes ten opzichte van een referentievlak vast te leggen. Waar een geodetisch CRS werkt met breedte- en lengtegraad, en een geprojecteerd CRS met x- en y-coördinaten op een plat vlak, richt een verticaal CRS zich uitsluitend op de z-as: de hoogte of diepte. NAP is een voorbeeld van een vertikaal CRS. Deze is gereistreerd onder EPSG:5709)<br>
+**<dfn>Verticaal CRS</dfn>** <br>
+Een coördinaatreferentiesysteem dat gebruikt wordt om hoogtes of dieptes ten opzichte van een referentievlak vast te leggen. Waar een geodetisch CRS werkt met breedte- en lengtegraad, en een geprojecteerd CRS met x- en y-coördinaten op een plat vlak, richt een verticaal CRS zich uitsluitend op de z-as: de hoogte of diepte. NAP is een voorbeeld van een verticaal CRS. Deze is gereistreerd onder EPSG:5709)<br>
 <br>
 **<dfn>Samengesteld CRS</dfn>** <br>
-Een Samengesteld CRS (Compound Coordinate Reference System) is een coördinaatreferentiesysteem dat ontstaat door twee of meer afzonderlijke CRS’en te combineren. Het wordt vaak gebruikt wanneer je zowel horizontale als verticale coördinaten nodig hebt om een positie volledig te beschrijven. Voor BIM geldt dat RD en NAP worden gecombineerd vanuit 2 verschillende CRS systemen. EPSG:28992 voor RD (x,y) en EPSG:5709 voor NAP (H). Het samengestelde CRS is EPSG:7415.<br>
+Een Samengesteld CRS (Compound Coordinate Reference System) is een coördinaatreferentiesysteem dat ontstaat door twee of meer afzonderlijke CRS'en te combineren. Het wordt vaak gebruikt wanneer je zowel horizontale als verticale coördinaten nodig hebt om een positie volledig te beschrijven. Voor BIM geldt dat RD en NAP worden gecombineerd vanuit 2 verschillende CRS systemen. EPSG:28992 voor RD (x,y) en EPSG:5709 voor NAP (H). Het samengestelde CRS is EPSG:7415.<br>
 <br>
 **<dfn>Lokaal CRS</dfn>** of **<dfn>Engineering CRS</dfn>** <br>
 Een lokale assenstelsel bepaald voor de bouw. Het 'grid A-1' en de coordinaten dit hieruit voortkomen zijn een voorbeeld van een  lokaal CRS. De projectie naar RD kan wordt vastgelegd met de translatie en rotatie zoals deze wordt vastgesteld in de <a>IFCMapconversion</a>.<br>
@@ -44,23 +44,23 @@ Ellipsoïdische hoogte is de hoogte van een punt ten opzichte van een referentie
 Een quasi-geoïdemodel is een wiskundig model dat de vorm van de geoïde (gemiddeld zeeniveau) benadert en gebruikt wordt om GNSS-hoogtes (ellipsoïdale hoogtes) om te rekenen naar fysische hoogtes zoals NAP.<br>
 <br>
 **<dfn>Coördinatentransformatie</dfn>:** <br>
-Een coördinatentransformatie is het proces waarbij coördinaten van een punt of dataset worden omgerekend van het ene coördinaatreferentiesysteem (CRS) naar een ander. Dit is nodig omdat er wereldwijd verschillende CRS’en bestaan (bijvoorbeeld WGS84, RD, NAP), die elk hun eigen referentie-ellipsoïde, projectie of referentievlak gebruiken.<br>
+Een coördinatentransformatie is het proces waarbij coördinaten van een punt of dataset worden omgerekend van het ene coördinaatreferentiesysteem (CRS) naar een ander. Dit is nodig omdat er wereldwijd verschillende CRS'en bestaan (bijvoorbeeld WGS84, RD, NAP), die elk hun eigen referentie-ellipsoïde, projectie of referentievlak gebruiken.<br>
 <br>
 **<dfn>Coördinaatconversie</dfn>:** <br>
 Het uitdrukken van een coördinaat in een ander coördinatenstelsel zonder dat dit punt een andere locatie op aarde krijgt.<br>
 <br>
 
-**<dfn>2D gelijkvormigheidstransformatie</dfn>** <br>
-Een 2D gelijkvormigheidstransformatie (ook wel Helmert-transformatie genoemd) is een wiskundige transformatie die een vlakke coördinatenruimte (2D) omzet naar een andere, waarbij de vorm en verhoudingen behouden blijven. Het wordt veel gebruikt in de geodesie en GIS om coördinaten van het ene stelsel naar het andere te transformeren.<br>
+**<dfn data-lt="2D-gelijkvormigheidstransformatie|2D gelijkvormigheidstransformatie">2D-gelijkvormigheidstransformatie</dfn>** <br>
+Een 2D-gelijkvormigheidstransformatie (ook wel Helmerttransformatie genoemd) is een wiskundige transformatie die een vlakke coördinatenruimte (2D) omzet naar een andere, waarbij de vorm en verhoudingen behouden blijven. Het wordt veel gebruikt in de geodesie en GIS om coördinaten van het ene stelsel naar het andere te transformeren.<br>
 <br>
-**<dfn>2D Helmert transformatie</dfn>** <br>
-Zie <a>2D gelijkvormigheidstransformatie</a><br>
+**<dfn data-lt="2D-Helmerttransformatie|2D Helmert transformatie">2D-Helmerttransformatie</dfn>** <br>
+Zie <a>2D-gelijkvormigheidstransformatie</a><br>
 <br>
-**<dfn>3D gelijkvormigheidstransformatie</dfn>** <br>
-Een 3D gelijkvormigheidstransformatie (ook wel Helmert-transformatie genoemd) is een wiskundige transformatie die een orthogonale coördinatenruimte (3D) omzet naar een andere, waarbij de vorm en verhoudingen behouden blijven. Het wordt veel gebruikt in de geodesie en GIS om coördinaten van het ene stelsel naar het andere te transformeren.<br>
+**<dfn data-lt="3D-gelijkvormigheidstransformatie|3D gelijkvormigheidstransformatie">3D-gelijkvormigheidstransformatie</dfn>** <br>
+Een 3D-gelijkvormigheidstransformatie (ook wel Helmerttransformatie genoemd) is een wiskundige transformatie die een orthogonale coördinatenruimte (3D) omzet naar een andere, waarbij de vorm en verhoudingen behouden blijven. Het wordt veel gebruikt in de geodesie en GIS om coördinaten van het ene stelsel naar het andere te transformeren.<br>
 <br>
-**<dfn>3D Helmert transformatie</dfn>** <br>
-Zie <a>3D gelijkvormigheidstransformatie</a><br>
+**<dfn data-lt="3D-Helmerttransformatie|3D Helmert transformatie">3D-Helmerttransformatie</dfn>** <br>
+Zie <a>3D-gelijkvormigheidstransformatie</a><br>
 <br>
 **<dfn>kleinstekwadratenschatting</dfn>** <br>
 kleinstekwadratenschatting (Least Squares Estimation, LSE) is een wiskundige methode om parameters in een model te schatten door de som van de kwadraten van de afwijkingen (residuen) tussen waargenomen waarden en modelvoorspellingen zo klein mogelijk te maken. Het is een fundamenteel principe in statistiek, geodesie, econometrie en data-analyse.<br>

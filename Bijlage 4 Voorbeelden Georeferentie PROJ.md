@@ -8,7 +8,7 @@ Wanneer men werkt in een engineering CRS in een cartesisch assenstelsel waarbij 
 * Stap 2: Reken deze om naar geocentrische (X,Y,Z) coördinaten (vanaf het middelpunt van de aarde) 
 * Stap 3: Maak een PROJ-string, -pipeline aan of WKT-string met met deze waarden.
 
-Wanneer geen van de assen ook het Noorden is, dan kan men dit in PROJ definiëren met een 2D Helmerttransformatie.
+Wanneer geen van de assen ook het Noorden is, dan kan men dit in PROJ definiëren met een 2D-Helmerttransformatie.
 
 ## Voorbeelden
 <aside class="example" title="Voorbeeld van een PROJ-string voor topocentrische coördinaten">

@@ -1,0 +1,110 @@
+# Georeferentie in uitwisseling
+Wanneer men in een bepaalde toepassing of softwarepakket werkt, bevindt een model zich binnen deze toepassing in een assenstelsel. Dit is nodig om op een systematische, eenduidige en wiskundige manier locaties en vormen in de ruimte te kunnen vastleggen, verwerken en communiceren. Wanneer men modellen wil delen of combineren buiten een toepassing of softwarepakket kan men dit in een open uitwisselformaat uitwisselen. Hieronder volgt een overzicht van verschillende open uitwisselformaten en de manieren waarop georeferentie hierin wordt ondersteund. 
+
+## Industry Foundation Classes (IFC)
+IFC is een uitwisselformaat bedoeld voor het uitwisselen van de informatie in de architectuur-, engineering- en bouwsector (AEC). Het is een software-onafhankelijk open dataformaat. Binnen het IFC-schema is het mogelijk om de volgende attributen voor georeferentie te gebruiken: 
+
+- Binnen IFC (4.3) kan men [IfcPostalAddress](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcPostalAddress.htm) gebruiken om modellen met georeferentie op level 10 uit te wisselen. 
+- Binnen IFC (4.3) kan men met de attributen RefLatitude, RefLongitude en RefElevation van [IfcSite](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcSite.htm) modellen met georeferentie op level 20 uit te wisselen. 
+- Binnen IFC (4.3) kan men [IfcAxis2Placement3D](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcAxis2Placement3D.htm) gebruiken om modellen met georeferentie op level 30 uit te wisselen. Met de attributen Location, Axis en RefDirection kunnen locatie en richting meegegeven worden.
+- Voor georeferentie level 40 kan men [IfcGeometricRepresentationContext](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcGeometricRepresentationContext.htm) gebruiken. 
+- [IfcMapConversion](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcMapConversion.htm) gebruikt men binnen IFC (4.3) voor het beschrijven van georeferentie op level 50. Er is een attribuut SourceCRS, TargetCRS, attributen voor verplaatsing, verdraaiing en schaling. 
+Ook is het mogelijk [IfcMapConversionScaled](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcMapConversionScaled.htm) te gebruiken om een aparte x, y en z schaal op te geven (FactorX, FactorY en FactorZ) dat benodigd is voor RDNAP.
+- Er is geen klasse binnen IFC (4.3) die ondersteuning biedt voor georeferentie 60. Een work-around is de mogelijkheid om gebruik te maken van generic property sets ([IfcPropertySet](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcPropertySet.htm)) voor het opslaan van informatie over de controlepunten voor deze methodiek [[Clemen2019]]. Deze werkwijze wordt momenteel niet ondersteund.  
+
+<aside class="note" title="Gebruik IfcMapConversion">
+  <p><strong>AANBEVELING:</strong> Gebruik IfcMapConversion of, voor een nauwkeurigere aansluiting op bijvoorbeeld RDNAP, IfcMapConversionScaled voor georeferentie van BIM in IFC t.b.v combinatie Geo en BIM.</p>
+</aside>
+
+IfcMapConversion kan zowel gebruikt worden voor het transformeren van BIM naar Geo als van Geo naar BIM. Vanuit een digitaal 3D-stadsmodel in CityGML of CityJSON kan een deel van dit model naar IFC worden geëxporteerd. Dit deel kan dan op een nulpunt worden gepositioneerd. In de IfcMapConversion-attributen kunnen de transformatiewaarden worden ingevuld. 
+
+**IFC 5/ IFC X**  
+IFC (5) ofwel IFC X is momenteel in ontwikkeling. Het is een herstructurering van de huidige IFC-schema's. De functionaliteit van de huidige schema's wil men behouden, maar de technische basis en serialisatie veranderen. Waar de huidige IFC-schema's op STEP zijn gebaseerd, is het IFC5-schema op JSON gebaseerd. 
+
+Voor geometrie maakt IFC 5 gebruik van het USD-formaat (Universal Scene Description), voor geometrie, bijvoorbeeld UsdGeom Mesh (een oppervlaktemodel van veelhoeken). Er zijn nog geen vastgestelde afspraken over georeferentie. Wel zijn in de eerste verkenningen de elementen van IfcMapConversion terug te zien, maar dan als JSON-attributen. 
+
+De herstructurering gaat verder dan de serialisatie. IFC 5 stelt een model samen uit lagen die over elkaar heen worden gelegd, elk met een eigen herkomst en een eigen versie. Daarmee worden incrementele wijzigingen, samenwerking tussen meerdere auteurs en herleidbaar eigenaarschap mogelijk zonder dat het hele model opnieuw hoeft te worden uitgewisseld [[VanBerlo2026]].
+
+Diezelfde opzet maakt het mogelijk om definities uit andere standaarden op te nemen in plaats van ze opnieuw te formuleren. Voor georeferentie is dat direct toepasbaar. [Bijlage 4](#d-2-projjson) legt een lokaal CRS en de binding daarvan aan RDNAP al vast in PROJJSON, inclusief translatie, rotatie en schaal per as. Dat is dezelfde informatie die IfcMapConversionScaled met IFC-eigen attributen vastlegt. Wat in IFC zelf is gedefinieerd, is dus niet de CRS-definitie maar de transformatie. Omdat IFC 5 op JSON is gebaseerd, kan een PROJJSON-definitie er rechtstreeks in worden opgenomen. Voor bestaande modellen blijven de IfcMapConversion-attributen bruikbaar.
+
+Dezelfde uitbreidbaarheid brengt georeferentie op [level 60](#level-60) binnen bereik. Clemen en Görne stelden bij het definiëren van de levels al vast dat IFC de drietrapstransformatie tussen het BIM-stelsel, het lokale CRS van de bouwplaats en een geodetisch CRS niet kan opslaan [[Clemen2019]]. Een aparte laag met ingemeten punten, met coördinaten in elk van die stelsels, past wel in een gecomponeerd model. 
+
+## DXF
+Wanneer men in 2D-vectorsoftware werkt die geen IFC-bestand (.ifc) kan exporteren zijn er ook mogelijkheden voor georeferentie. De objecten in de DXF worden bij voorkeur getekend in een coördinatenruimte die matcht met een geprojecteerd CRS (zoals EPSG:28992). De coördinaten zijn dan in meters, zoals in het coördinatenstelsel. Voorbeeld: een lijn van punt (110000, 450000) naar punt (110500, 450500) is dan correct gepositioneerd in RD-coördinaten.
+
+<aside class="note" title="Teken wanneer mogelijk in RD in 2D-Vectorsoftware">
+  <p><strong>AANBEVELING:</strong> Teken wanneer mogelijk in RD-coördinaten in 2D-vectorsoftware (CAD) en wissel de georeferentiegegevens uit in de GEODATA-entiteit van DXF.</p>
+</aside>
+
+Vanuit software kan het mogelijk zijn om te exporteren naar DXF. Een DXF-bestand heeft de mogelijkheid om georeferentiegegevens op te slaan in de [GEODATA](https://help.autodesk.com/view/OARX/2018/ENU/?guid=GUID-104FE0E2-4801-4AC8-B92C-1DDF5AC7AB64)-entiteit. Exports van bijvoorbeeld DWG naar DXF kunnen daarbij de georeferentie behouden indien deze correct is ingesteld. 
+
+Dit is niet vanuit alle software mogelijk. Bij software die alleen werkt met lokale coördinaten is het lastig om op coördinaat 110000 - 450000 te werken, omdat dit heel ver uit het centrale punt van deze software (punt 0,0) ligt. In dat geval is het mogelijk om de attributen voor georeferentie als extra bestand mee te geven naast de .dxf als een WKT-, PROJ- of PROJJSON-bestand. 
+
+<aside class="note" title="Voorzie in een extra bestand voor georeferentie">
+  <p><strong>AANBEVELING:</strong> Voorzie in een extra bestand in <code>.PROJ</code> volgens 
+    <a href="https://proj.org/en/stable/specifications/" rel="noopener noreferrer" target="_blank">PROJ</a> of een <code>.WKT</code> volgens
+    <a href="https://www.ogc.org/standards/wkt-crs/" rel="noopener noreferrer" target="_blank"> WKT-CRS</a> wanneer de georeferentie en het gebruikte CRS niet in het bronbestand en in uitwisselformaat DXF is gedefinieerd.</p>
+</aside>
+
+## (City)GML 
+[GML](https://www.ogc.org/standards/gml/) geeft de mogelijkheid om een verwijzing te maken naar standaard CRS'en gedefinieerd door EPSG. Daarnaast geeft GML de mogelijkheid om een Engineering CRS te definiëren. Het is mogelijk om dit lokale coördinatenstelsel te verbinden met een bekend coördinatenstelsel zoals RDNAP waardoor het voor uitwisseling, visualisatie en analyse gebruikt kan worden. 
+
+CityGML is een open datamodel en uitwisselformaat voor de representatie van 3D-geo-informatie.
+Het kent verschillende encodings, waarvan XML/GML (CityGML) en JSON (CityJSON) de meest gebruikte zijn. Omdat de standaard een tijd lang alleen de GML-encoding kende, en sterk verweven was met deze encoding, is vanaf het begin de term CityGML gebruikt voor zowel het data model als de GML-encoding. Dat kan verwarrend zijn voor buitenstaanders.
+De CityGML encoding biedt twee mogelijkheden om een coördinatenstelsel te duiden voor het model. De voorkeur is om één coördinatenstelsel voor de hele dataset te duiden. Dit doet men in de gml:Envelope die gebruikt wordt om de ruimtelijke begrenzing (bounding box) van de dataset aan te geven. De andere mogelijkheid is om per geometrie met srsName een CRS op te geven.
+
+<aside class="note" title="Verwijs naar een standaard-CRS in (City)GML">
+  <p><strong>AANBEVELING:</strong> Refereer naar een URI van een standaard CRS of een URI van een zelf gehost CRS. Wanneer dit niet mogelijk is kan men het Engineering CRS in een (City)GML-bestand definiëren. </p>
+</aside>
+  
+Een voorbeeld van georeferentie in GML en CityGML vindt men in de
+[bijlage voorbeeld georeferentie in GML](#voorbeeld-van-georeferentie-in-gml).
+
+## CityJSON
+In de CityJSON encoding moet, anders dan in CityGML, één coördinatenstelsel voor het totaalmodel worden geduid. Dit doet men in het attribuut: 
+``` json
+"metadata": {
+  "referenceSystem": "https://www.opengis.net/def/crs/EPSG/0/7415"
+}
+```
+Het is mogelijk om met het attribuut: "transform" een verplaatsing en verschaling van een model te duiden. Deze functionaliteit is aan CityJSON toegevoegd om de bestandsgrootte te verkleinen. Met deze functionaliteit is het mogelijk om de coördinaten van de vertices weer te geven als integers, en de schaalfactor en de translatie op te slaan die nodig is om de originele coördinaten (als floats/doubles) te verkrijgen. Deze functionaliteit kan in principe ook gebruikt worden om de hele dataset rond het 0-punt te modelleren. Wel zijn hier dan extra restricties voor nodig.
+
+Een voorbeeld van georeferentie in CityJSON vindt men in de [bijlage voorbeeld georeferentie in CityJSON](#voorbeeld-van-georeferentie-in-cityjson)
+ 
+## GeoPackage
+[GeoPackage](https://www.geopackage.org/spec140/index.html) staat naast GML als uitwisselformaat op de 'pas toe of leg uit'-lijst . Dit formaat is een OGC-standaard en geschikt voor georeferentie wanneer men werkt met 2D-GeoBIM-modellen die gemodelleerd worden op een al bekend CRS (bijvoorbeeld RDNAP of WGS84). Geopackage is gebaseerd op het databaseformaat SQL-lite. In de tabel gpkg_spatial_ref_sys kan informatie over het coördinatenstelsel worden opgeslagen. De geopackage standaard heeft geen vaste manier om een engineering CRS te duiden. Wanneer de SourceCRS een lokaal gedefinieerd stelsel is, is dit uitwisselformaat minder geschikt.
+
+Een Geopackage slaat in de tabel gpkg_spatial_ref_sys de volgende waarden op: 
+
+| Kolom | Beschrijving |
+|----|---|
+| srs_name | voor mensen leesbare naam van een SRS |
+| srs_id | id van een SRS |
+| organization | naam van definiërende organisatie |
+| organization_coordsys_id | id van het CRS |
+| definition | Well-known text (WKT)-representatie van de SRS |
+
+## API
+Conform de [OGC API's](https://ogcapi.ogc.org/) (Part 2: Coordinate Reference Systems by Reference) kan men een server bevragen op de collecties die deze aanbiedt. Door met een OGC API - Features een HTTP GET-verzoek naar /collecties te doen, krijgt men een lijst met de beschikbare collecties. Als men vervolgens een specifieke collectie bevraagt, kan men een lijst van coördinaatreferentiesystemen inzien in de property "crs" waarmee de items door de server geleverd kunnen worden. 
+
+Zo kan men vanuit de PDOK-API bij features van de BGT kiezen uit: 
+```
+ "crs": [
+  "http://www.opengis.net/def/crs/OGC/1.3/CRS84",
+  "http://www.opengis.net/def/crs/EPSG/0/28992",
+  "http://www.opengis.net/def/crs/EPSG/0/3857",
+  "http://www.opengis.net/def/crs/EPSG/0/4258"
+ ],
+ "storageCrs": "http://www.opengis.net/def/crs/EPSG/0/28992",
+ ```
+
+Zo levert:
+- `GET /collections/{collectionId}/items/{featureId}`: een specifiek item uit de collectie in het standaard-CRS (CRS84);
+- `GET /collections/{collectionId}/items?crs={crsuri}`: de items uit de collectie in het opgegeven CRS.
+
+
+De OGC-API features legt geen beperking op aan de te gebruiken CRS'en. Het is daarmee ook mogelijk om via OGC-API features data te leveren in een lokaal gedefinieerd eigen coördinatenstelsel. 
+
+Om een dataset met OGC API-features aan te bieden dient men met een URI het CRS te identificeren. Die URI moet verwijzen naar een beschrijving van het CRS zodat een client het kan begrijpen of ophalen. Wanneer men als client een server bevraagt met een CRS (gedefinieerd door EPSG of lokaal) dat niet door de server is geïmplementeerd, geeft deze een foutmelding geven. 
+
+Wanneer men met een lokaal CRS bevragingen zou willen doen aan een server die niet voorziet in dit CRS kan het mogelijk zijn om met OGC API Processes een transformCRS te duiden met input de sourceCRS, targetCRS en de coördinaten. De output is de getransformeerde coördinaten in het door de server geaccepteerde stelsel. Dit lijkt op deze service https://epsg.io/transform in API-vorm. 
