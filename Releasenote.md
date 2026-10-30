@@ -11,6 +11,7 @@ Deze release bevat de definitieve versie van de praktijkrichtlijn Georefereren, 
 - Aanpassing van de aanbeveling voor het gebruik van schaal-attribuut voor unit-schaling en crs-schaling in Hoofdstuk 4
 - Uitleg toegevoegd over het verschil in tooling voor georeferentie in hoofdstuk 9 
 - Toevoeging van DXF-georeferentie attributen in hoofdstuk 6 
+- Aanpassing van de nauwkeurigheidsbeschrijving voor de Geodatasets in hoofdstuk 5
 
 ## Overige wijzigingen 
 - Enkele tekstuele en redactionele verbeteringen doorgevoerd. 
