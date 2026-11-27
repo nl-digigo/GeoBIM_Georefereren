@@ -49,12 +49,14 @@ let respecConfig = {
   licence: "cc-by",                 // Attribution, met bronvermelding
   //-- TODO shortName is verplicht! (komt in de URL: kies logische afkorting)--------------
   shortName: "NL-GeoBIM-GeoRef",
+  thisVersion: "https://nl-digigo.github.io/GeoBIM_Georefereren/",
+  latestVersion: "https://nl-digigo.github.io/GeoBIM_Georefereren/",
   //edDraftURI = De URI van de draft version. Deze wordt automatisch afgeleid van de github URI; maar kan hier overschreven worden. 
 	//edDraftURI: ["https://geonovum.github.io", "/", "shortName"],
 
   //-- publishDate is verplicht -------------------------------------------------------
   //-- NB: in de werkversie uitzetten, want dan pakt Respec de pushdate ---------------
-  publishDate: "2026-30-10",
+  publishDate: "2026-10-30",
   //eventueel is het mogelijk een versienummer mee te geven, maar bij Geonovum werken we gewoonlijk alleen met datum als onderdeel van de permanente URI.
   publishVersion: "1.0.0",
   //previousVersion: "0.0.1",
